@@ -13,7 +13,7 @@ where t is time, w the radian frequency and Θ the phase angle.
 Thus x varies with time within the range -1 <= x <= +1 or the signed unit interval.
 
 ### Shaping Table
-A 1-D matrix containing values for a shaping function f with values within teh signed unit interval.
+A 1-D matrix containing values for a shaping function f with values within the signed unit interval.
 
 ### Waveform Synthesis
 To synthesize a steady state spectrum:

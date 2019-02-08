@@ -1,9 +1,9 @@
 # math
 
-##Application of Shaping functions in a basic waveshaping synthesizer 
+## Application of Shaping functions in a basic waveshaping synthesizer 
 A basic waveshaping synthesizer consists of:
  
-###Excitation Table
+### Excitation Table
 A matrix containing values for a cosine wave over unit period defined as:
 
 x = cos Θ with Θ = wt
@@ -12,15 +12,15 @@ where t is time, w the radian frequency and Θ the phase angle.
 
 Thus x varies with time within the range -1 <= x <= +1 or the signed unit interval.
 
-###Shaping Table
+### Shaping Table
 A 1-D matrix containing values for a shaping function f with values within teh signed unit interval.
 
-###Waveform Synthesis
+### Waveform Synthesis
 To synthesize a steady state spectrum:
 
 Successive values f(x) are computed by performing a table lookup in the Shaping Table of successive values of x pulled out of the Excitation Table.
 
-###Shaping Function
+### Shaping Function
 The function f must meet the following conditions:
 - f must take a number in the range (-1, +1) i.e. the signed unit interval.
 - f must return a result in the signed unite interval.
@@ -37,7 +37,7 @@ hence f(x) = g(cos^-1(x))
 To produce some desired waveshape g(Θ), f(x) can in principle be set as g(cos^-1(x))
 
 
-###Implementation
+### Implementation
 The series of functions Tn known as Chebychev polynomials of the first kind can be shown to be very convenient wave-shaping functions.
 
 The nth harmonic is produced when Tn is used as a shaping function.

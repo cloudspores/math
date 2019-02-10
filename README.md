@@ -23,7 +23,7 @@ Successive values f(x) are computed by performing a table lookup in the Shaping 
 ### Shaping Function
 The function f must meet the following conditions:
 - f must take a number in the range (-1, +1) i.e. the signed unit interval.
-- f must return a result in the signed unite interval.
+- f must return a result in the signed unit interval.
 
 An infinite range of waveforms including all symmetric waveshapes can be produced using this method.
 

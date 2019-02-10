@@ -1,6 +1,6 @@
 # math
 
-## Application of Shaping functions in a basic waveshaping synthesizer 
+## Application of shaping functions in a basic waveshaping synthesizer 
 A basic waveshaping synthesizer consists of:
  
 ### Excitation Table

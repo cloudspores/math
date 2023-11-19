@@ -1,6 +1,9 @@
 # math
 
 ## Application of shaping functions in a waveshaping synthesizer 
+"Digital Synthesis of Complex Waveforms" – a waveshaping synthesizer hardware was designed and built using a microcomputer to provide facilities including frequency control over a four octave range, note duration control, envelope shaping and selection, dynamic spectrum generation, and voice selection and mixing.
+
+Implementing Chebyshev polynomials of the first kind (a set of orthogonal polynomials), the synthesizer was designed to incorporate hardware dynamic waveshaping synthesis for reproduction of any static and dynamic harmonic spectra.
 
 Chebyshev polynomials have the unique property of multiplying the frequency of a sine wave input. When fed a sine wave with amplitude 1.0, the output sine wave will have a frequency N times higher, with N being the degree of the polynomial. This makes Chebyshev polynomials act like frequency multipliers. For sine wave inputs less than 1.0 amplitude, the output contains a complex mixture of harmonics. 
 

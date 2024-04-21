@@ -11,9 +11,61 @@ To achieve a target harmonic profile, multiple Chebyshev polynomials can be comb
 
 Performing the complex Chebyshev polynomial calculations at real-time audio rates can be computationally demanding. To optimize efficiency, the polynomial mappings are pre-computed and stored in a lookup table. During sound synthesis, the system simply retrieves the amplitude of the input sine wave and finds the corresponding polynomial result value in the table. This lookup approach drastically reduces computations required at run time. By leveraging pre-processing and table indexing, we can alleviate computational load while still harnessing the harmonic shaping capabilities of Chebyshev polynomials for audio signals. The lookup methodology streamlines audio rate polynomial evaluation, enabling efficient and flexible harmonic content modification in real-time sound production.
 
+
+
++----------------------------------------------------------+
+|                    Waveform Synthesis                    |
+|                                                          |
+|   +--------------------------------------------------+   |
+|   |                   Excitation                     |   |
+|   |                      Table                       |   |
+|   +--------------------------------------------------+   |
+|   |         .......                                  |   |
+|   |      ...       ...                               |   |
+|   |    ..             ..                             |   |
+|   |   .                 .                            |   |
+|   |  .                   .                           |   |
+|   | .                     .                          |   |
+|   |.                       .                       . |   |
+|   |                         .                     .  |   |
+|   |                          .                   .   |   |
+|   |                           .                 .    |   |
+|   |                            ..             ..     |   |
+|   |                              ...       ...       |   |
+|   |                                 .......          |   |
+|   +--------------------------------------------------+   |
+|                             |                            |
+|                             v                            |
+|   +--------------------------------------------------+   |
+|   |                     Shaping                      |   |
+|   |                       Table                      |   |
+|   +--------------------------------------------------+   |
+|   |               .........                     .    |   |
+|   |           ...          ...               .       |   |
+|   |        ..                  ..         .          |   |
+|   |      .                         .   .             |   |
+|   +--------------------------------------------------+   |
+|                             |                            |
+|                             v                            |
+|              Synthesized waveform g(Θ)                   |
+|                       where                              |
+|                   g(Θ) = f(x) and                        |
+|                    x = cos(Θ)                            |
++----------------------------------------------------------+
+
+
 A waveshaping synthesizer consists of:
  
 ### Excitation Table
+
++---+---+---+---+---+---+
+| x | x | x | x | x | x |
++---+---+---+---+---+---+
+  |   |   |   |   |   |
+  v   v   v   v   v   v
+ cos(wt) values in range
+     -1 <= x <= +1
+     
 A matrix containing values for a cosine wave over unit period defined as:
 
 x = cos Θ with Θ = wt
@@ -23,9 +75,31 @@ where t is time, w the radian frequency and Θ the phase angle.
 Thus x varies with time within the range -1 <= x <= +1 or the signed unit interval.
 
 ### Shaping Table
+
++---+---+---+---+---+---+
+| f | f | f | f | f | f |
++---+---+---+---+---+---+
+  |   |   |   |   |   |
+  v   v   v   v   v   v
+Shaping function values
+   in range [-1, +1]
+
 A 1-D matrix containing values for a shaping function f with values within the signed unit interval.
 
 ### Waveform Synthesis
+
++------------------------+
+|  For each x value:     |
+|    f(x) = lookup(x)    |
+|    in Shaping Table    |
++------------------------+
+             |
+             v
+ Synthesized waveform g(Θ)
+          where
+      g(Θ) = f(x) and
+       x = cos(Θ)
+
 To synthesize a steady state spectrum:
 
 Successive values f(x) are computed by performing a table lookup in the Shaping Table of successive values of x pulled out of the Excitation Table.

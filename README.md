@@ -13,58 +13,59 @@ Performing the complex Chebyshev polynomial calculations at real-time audio rate
 
 
 
-+----------------------------------------------------------+
-|                    Waveform Synthesis                    |
-|                                                          |
-|   +--------------------------------------------------+   |
-|   |                   Excitation                     |   |
-|   |                      Table                       |   |
-|   +--------------------------------------------------+   |
-|   |         .......                                  |   |
-|   |      ...       ...                               |   |
-|   |    ..             ..                             |   |
-|   |   .                 .                            |   |
-|   |  .                   .                           |   |
-|   | .                     .                          |   |
-|   |.                       .                       . |   |
-|   |                         .                     .  |   |
-|   |                          .                   .   |   |
-|   |                           .                 .    |   |
-|   |                            ..             ..     |   |
-|   |                              ...       ...       |   |
-|   |                                 .......          |   |
-|   +--------------------------------------------------+   |
-|                             |                            |
-|                             v                            |
-|   +--------------------------------------------------+   |
-|   |                     Shaping                      |   |
-|   |                       Table                      |   |
-|   +--------------------------------------------------+   |
-|   |               .........                     .    |   |
-|   |           ...          ...               .       |   |
-|   |        ..                  ..         .          |   |
-|   |      .                         .   .             |   |
-|   +--------------------------------------------------+   |
-|                             |                            |
-|                             v                            |
-|              Synthesized waveform g(Θ)                   |
-|                       where                              |
-|                   g(Θ) = f(x) and                        |
-|                    x = cos(Θ)                            |
-+----------------------------------------------------------+
+    +----------------------------------------------------------+
+    |                    Waveform Synthesis                    |
+    |                                                          |
+    |   +--------------------------------------------------+   |
+    |   |                   Excitation                     |   |
+    |   |                      Table                       |   |
+    |   +--------------------------------------------------+   |
+    |   |         .......                                  |   |
+    |   |      ...       ...                               |   |
+    |   |    ..             ..                             |   |
+    |   |   .                 .                            |   |
+    |   |  .                   .                           |   |
+    |   | .                     .                          |   |
+    |   |.                       .                       . |   |
+    |   |                         .                     .  |   |
+    |   |                          .                   .   |   |
+    |   |                           .                 .    |   |
+    |   |                            ..             ..     |   |
+    |   |                              ...       ...       |   |
+    |   |                                 .......          |   |
+    |   +--------------------------------------------------+   |
+    |                             |                            |
+    |                             v                            |
+    |   +--------------------------------------------------+   |
+    |   |                     Shaping                      |   |
+    |   |                       Table                      |   |
+    |   +--------------------------------------------------+   |
+    |   |               .........                     .    |   |
+    |   |           ...          ...               .       |   |
+    |   |        ..                  ..         .          |   |
+    |   |      .                         .   .             |   |
+    |   +--------------------------------------------------+   |
+    |                             |                            |
+    |                             v                            |
+    |              Synthesized waveform g(Θ)                   |
+    |                       where                              |
+    |                   g(Θ) = f(x) and                        |
+    |                    x = cos(Θ)                            |
+    +----------------------------------------------------------+
+
 
 
 A waveshaping synthesizer consists of:
  
 ### Excitation Table
 
-+---+---+---+---+---+---+
-| x | x | x | x | x | x |
-+---+---+---+---+---+---+
-  |   |   |   |   |   |
-  v   v   v   v   v   v
- cos(wt) values in range
-     -1 <= x <= +1
+    +---+---+---+---+---+---+
+    | x | x | x | x | x | x |
+    +---+---+---+---+---+---+
+      |   |   |   |   |   |
+      v   v   v   v   v   v
+     cos(wt) values in range
+         -1 <= x <= +1
      
 A matrix containing values for a cosine wave over unit period defined as:
 
@@ -76,29 +77,29 @@ Thus x varies with time within the range -1 <= x <= +1 or the signed unit interv
 
 ### Shaping Table
 
-+---+---+---+---+---+---+
-| f | f | f | f | f | f |
-+---+---+---+---+---+---+
-  |   |   |   |   |   |
-  v   v   v   v   v   v
-Shaping function values
-   in range [-1, +1]
+    +---+---+---+---+---+---+
+    | f | f | f | f | f | f |
+    +---+---+---+---+---+---+
+      |   |   |   |   |   |
+      v   v   v   v   v   v
+    Shaping function values
+       in range [-1, +1]
 
 A 1-D matrix containing values for a shaping function f with values within the signed unit interval.
 
 ### Waveform Synthesis
 
-+------------------------+
-|  For each x value:     |
-|    f(x) = lookup(x)    |
-|    in Shaping Table    |
-+------------------------+
-             |
-             v
- Synthesized waveform g(Θ)
-          where
-      g(Θ) = f(x) and
-       x = cos(Θ)
+    +------------------------+
+    |  For each x value:     |
+    |    f(x) = lookup(x)    |
+    |    in Shaping Table    |
+    +------------------------+
+                 |
+                 v
+     Synthesized waveform g(Θ)
+              where
+          g(Θ) = f(x) and
+           x = cos(Θ)
 
 To synthesize a steady state spectrum:
 

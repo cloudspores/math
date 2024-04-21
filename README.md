@@ -12,48 +12,45 @@ To achieve a target harmonic profile, multiple Chebyshev polynomials can be comb
 Performing the complex Chebyshev polynomial calculations at real-time audio rates can be computationally demanding. To optimize efficiency, the polynomial mappings are pre-computed and stored in a lookup table. During sound synthesis, the system simply retrieves the amplitude of the input sine wave and finds the corresponding polynomial result value in the table. This lookup approach drastically reduces computations required at run time. By leveraging pre-processing and table indexing, we can alleviate computational load while still harnessing the harmonic shaping capabilities of Chebyshev polynomials for audio signals. The lookup methodology streamlines audio rate polynomial evaluation, enabling efficient and flexible harmonic content modification in real-time sound production.
 
 
-
-    +----------------------------------------------------------+
-    |                    Waveform Synthesis                    |
-    |                                                          |
-    |   +--------------------------------------------------+   |
-    |   |                   Excitation                     |   |
-    |   |                      Table                       |   |
-    |   +--------------------------------------------------+   |
-    |   |         .......                                  |   |
-    |   |      ...       ...                               |   |
-    |   |    ..             ..                             |   |
-    |   |   .                 .                            |   |
-    |   |  .                   .                           |   |
-    |   | .                     .                          |   |
-    |   |.                       .                       . |   |
-    |   |                         .                     .  |   |
-    |   |                          .                   .   |   |
-    |   |                           .                 .    |   |
-    |   |                            ..             ..     |   |
-    |   |                              ...       ...       |   |
-    |   |                                 .......          |   |
-    |   +--------------------------------------------------+   |
-    |                             |                            |
-    |                             v                            |
-    |   +--------------------------------------------------+   |
-    |   |                     Shaping                      |   |
-    |   |                       Table                      |   |
-    |   +--------------------------------------------------+   |
-    |   |               .........                     .    |   |
-    |   |           ...          ...               .       |   |
-    |   |        ..                  ..         .          |   |
-    |   |      .                         .   .             |   |
-    |   +--------------------------------------------------+   |
-    |                             |                            |
-    |                             v                            |
-    |              Synthesized waveform g(Θ)                   |
-    |                       where                              |
-    |                   g(Θ) = f(x) and                        |
-    |                    x = cos(Θ)                            |
-    +----------------------------------------------------------+
-
-
+    +--------------------------------------------------------+
+    |                    Waveform Synthesis                  |
+    |                                                        |
+    |   +------------------------------------------------+   |
+    |   |                   Excitation                   |   |
+    |   |                      Table                     |   |
+    |   +------------------------------------------------+   |
+    |   |....                                         ...|   |
+    |   |    ...                                   ...   |   |
+    |   |       ..                               ..      |   |
+    |   |         .                             .        |   |
+    |   |          .                           .         |   |
+    |   |           .                         .          |   |
+    |   |            .                       .           |   |
+    |   |             .                     .            |   |
+    |   |              .                   .             |   |
+    |   |               .                 .              |   |
+    |   |                ..             ..               |   |
+    |   |                  ...       ...                 |   |
+    |   |                     .......                    |   |
+    |   +------------------------+-----------------------+   |
+    |                            |                           |
+    |                            v                           |
+    |   +------------------------------------------------+   |
+    |   |                     Shaping                    |   |
+    |   |                       Table                    |   |
+    |   +------------------------------------------------+   |
+    |   |               .........                     .  |   |
+    |   |           ...          ...               .     |   |
+    |   |        ..                  ..         .        |   |
+    |   |      .                         .   .           |   |
+    |   +-----------------------+------------------------+   |
+    |                           |                            |
+    |                           v                            |
+    |              Synthesized waveform g(Θ)                 |
+    |                       where                            |
+    |                   g(Θ) = f(x) and                      |
+    |                    x = cos(Θ)                          |
+    +--------------------------------------------------------+
 
 A waveshaping synthesizer consists of:
  

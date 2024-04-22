@@ -36,8 +36,8 @@ Performing the complex Chebyshev polynomial calculations at real-time audio rate
     |                            |                           |
     |                            v                           |
     |   +------------------------------------------------+   |
-    |   |                     Shaping                    |   |
-    |   |                       Table                    |   |
+    |   |                  Shaping Table                 |   |
+    |   |                                                |   |
     |   +------------------------------------------------+   |
     |   |               .........                     .  |   |
     |   |           ...          ...               .     |   |
